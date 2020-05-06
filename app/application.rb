@@ -1,14 +1,17 @@
-
 class Application
- 
-  def v
-    resp = Rack::Response.new
-    # current_time = Time.now.to_i
 
-    # resp.write "#{current_time}"
-    resp.write "Hi"
-    
+  def call(env)
+    resp = Rack::Response.new
+
+    time = Time.now.hour
+
+    if time <= 12
+      resp.write "Good Morning!"
+    else
+      resp.write "Good Afternoon!"
+    end
+
     resp.finish
   end
- 
+
 end
